@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Diabetes Tracker</string>
+    <string name="add_notes_here">Add Notes here</string>
+    <string name="notes">Notes</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="sugar_concentration">Sugar Concentration</string>
+    <string name="mmo_l">mmo/L</string>
+    <string name="tag">Tag</string>
+    <string name="systolic_pressure">Systolic Pressure</string>
+    <string name="diastolic_pressure">Diastolic Pressure</string>
+    <string name="mm_hg">mm Hg</string>
+    <string name="pulse">pulse</string>
+    <string name="measured_arm">Measured Arm</string>
+    <string name="unit_of_measure">Unit of Measure</string>
+    <string name="medication">Medication</string>
+    <string name="weight">Weight</string>
+    <string name="kg">Kg</string>
+    <string name="dosage">Dosage</string>
+    <string name="per">%</string>
+    <string name="measurement_type">Measurement Type</string>
+    <string name="mg">mg</string>
+    <string name="measured">Measured</string>
+    <string name="systolic">systolic</string>
+</resources>
