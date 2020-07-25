@@ -11,8 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,9 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ian.diabetestracker.MyActivities.A1cActivity;
-import com.ian.diabetestracker.MyActivities.BloodSugarActivity;
-import com.ian.diabetestracker.MyActivities.WeightActivity;
+import com.ian.diabetestracker.MyActivities.PatientApp.WeightActivity;
 import com.ian.diabetestracker.R;
 
 import java.text.SimpleDateFormat;
@@ -32,7 +28,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.ian.diabetestracker.Constants.Links.SAVE_A1C_DETAILS;
 import static com.ian.diabetestracker.Constants.Links.SAVE_WEIGHT_DETAILS;
 
 public class WeightModification extends AppCompatActivity {

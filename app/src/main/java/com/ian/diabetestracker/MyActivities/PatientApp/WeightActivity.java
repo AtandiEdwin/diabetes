@@ -1,4 +1,4 @@
-package com.ian.diabetestracker.MyActivities;
+package com.ian.diabetestracker.MyActivities.PatientApp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -19,12 +19,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ian.diabetestracker.Adapters.BloodSugarAdapter;
 import com.ian.diabetestracker.Adapters.WeightAdapter;
 import com.ian.diabetestracker.MainActivity;
-import com.ian.diabetestracker.Models.BloodSugarModel;
 import com.ian.diabetestracker.Models.WeightModel;
-import com.ian.diabetestracker.ModficationActivity.BloodSugarModification;
 import com.ian.diabetestracker.ModficationActivity.WeightModification;
 import com.ian.diabetestracker.R;
 
@@ -35,7 +32,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ian.diabetestracker.Constants.Links.FETCH_SUGAR_DETAILS;
 import static com.ian.diabetestracker.Constants.Links.FETCH_WEIGHT_DETAILS;
 
 public class WeightActivity extends AppCompatActivity {

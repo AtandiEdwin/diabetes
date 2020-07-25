@@ -2,30 +2,41 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ian.diabetestracker">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MyActivities.DoctorApp.Analysis"></activity>
+        <activity android:name=".MyActivities.DoctorApp.TakenSlots" />
+        <activity android:name=".MyActivities.PatientApp.HelpActivity" />
+        <activity android:name=".MyActivities.DoctorApp.DoctorMainActivity" />
+        <activity android:name=".MyActivities.DoctorApp.SlotSet" />
+        <activity android:name=".MyActivities.PatientApp.SlotsActivity" />
+        <activity android:name=".MyActivities.ChartHolderActivity" />
+        <activity android:name=".MyActivities.PatientApp.PatientChatActivity" />
+        <activity android:name=".MyActivities.DoctorApp.DoctorChatActivity" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-        <activity android:name=".ModficationActivity.A1cModification"></activity>
+
+        <activity android:name=".ModficationActivity.A1cModification" />
         <activity android:name=".ModficationActivity.WeightModification" />
         <activity android:name=".ModficationActivity.MedicationModification" />
         <activity android:name=".ModficationActivity.BloodPressureMoodification" />
         <activity android:name=".ModficationActivity.BloodSugarModification" />
-        <activity android:name=".MyActivities.A1cActivity" />
-        <activity android:name=".MyActivities.WeightActivity" />
-        <activity android:name=".MyActivities.BloodPressureActivity" />
-        <activity android:name=".MyActivities.MedicationActivity" />
-        <activity android:name=".MyActivities.BloodSugarActivity" />
-        <activity android:name=".MyActivities.StatisticsActivity" />
+        <activity android:name=".MyActivities.PatientApp.A1cActivity" />
+        <activity android:name=".MyActivities.PatientApp.WeightActivity" />
+        <activity android:name=".MyActivities.PatientApp.BloodPressureActivity" />
+        <activity android:name=".MyActivities.PatientApp.MedicationActivity" />
+        <activity android:name=".MyActivities.PatientApp.BloodSugarActivity" />
+        <activity android:name=".MyActivities.PatientApp.StatisticsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

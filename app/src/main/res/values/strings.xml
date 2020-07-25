@@ -20,6 +20,14 @@
     <string name="per">%</string>
     <string name="measurement_type">Measurement Type</string>
     <string name="mg">mg</string>
+    <string name="slot_note">Sorry!! no slots available at the moment</string>
     <string name="measured">Measured</string>
     <string name="systolic">systolic</string>
+    <string name="enter_message_here">enter message here</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send">send</string>
+    <string name="taken_slots">Taken Slots</string>
+    <string name="patient_analysis">Patient Analysis</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.ian.diabetestracker.MyActivities;
+package com.ian.diabetestracker.MyActivities.PatientApp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -19,13 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ian.diabetestracker.Adapters.BloodSugarAdapter;
-import com.ian.diabetestracker.Adapters.MedicationAdapter;
+import com.ian.diabetestracker.Adapters.A1cAdapter;
 import com.ian.diabetestracker.MainActivity;
-import com.ian.diabetestracker.Models.BloodSugarModel;
-import com.ian.diabetestracker.Models.MedicationModel;
-import com.ian.diabetestracker.ModficationActivity.BloodSugarModification;
-import com.ian.diabetestracker.ModficationActivity.MedicationModification;
+import com.ian.diabetestracker.Models.A1cModel;
+import com.ian.diabetestracker.ModficationActivity.A1cModification;
 import com.ian.diabetestracker.R;
 
 import org.json.JSONArray;
@@ -35,32 +32,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ian.diabetestracker.Constants.Links.FETCH_MEDICATION_DETAILS;
-import static com.ian.diabetestracker.Constants.Links.FETCH_SUGAR_DETAILS;
+import static com.ian.diabetestracker.Constants.Links.FETCH_A1C_DETAILS;
 
-public class MedicationActivity extends AppCompatActivity {
+public class A1cActivity extends AppCompatActivity {
 
-    RecyclerView mRecycler;
-    TextView total;
-    List<MedicationModel> mMed;
+    RecyclerView aRecycler;
+    List<A1cModel> mA1c;
+    TextView totalvalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medication);
+        setContentView(R.layout.activity_a1c);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Medication");
+        actionBar.setTitle("A1c");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        mMed =new ArrayList<>();
+        mA1c = new ArrayList<>();
 
-        total  =findViewById(R.id.totalValue);
+        totalvalue = findViewById(R.id.totalValue);
 
-        mRecycler = findViewById(R.id.medicationRecyclerId);
-        mRecycler.setHasFixedSize(true);
+        aRecycler = findViewById(R.id.A1cRecyclerId);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,FETCH_MEDICATION_DETAILS, new Response.Listener<String>() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,FETCH_A1C_DETAILS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -68,23 +64,21 @@ public class MedicationActivity extends AppCompatActivity {
                     for(int i=0; i<jsonArray.length();i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                        String m_value = jsonObject.getString("m_value");
-                        String m_dosage = jsonObject.getString("m_dosage");
-                        String m_uom = jsonObject.getString("m_uom");
-//                        String m_dosage = jsonObject.getString("unit_of_measure");
-                        String m_notes= jsonObject.getString("m_notes");
-                        String m_date = jsonObject.getString("m_date");
-                        String m_time = jsonObject.getString("m_time");
+                        String A1c_concentration = jsonObject.getString("A1c_concentration");
+                        String A1c_uom = jsonObject.getString("A1c_uom");
+                        String A1c_date = jsonObject.getString("A1c_date");
+                        String A1c_time = jsonObject.getString("A1c_time");
+                        String A1c_notes = jsonObject.getString("A1c_notes");
 
-                        MedicationModel model = new MedicationModel(m_value,m_dosage,m_uom,m_date,m_time,m_notes);
-                        mMed.add(model);
+                        A1cModel model = new A1cModel(A1c_concentration,A1c_uom,A1c_date,A1c_time,A1c_notes);
+                        mA1c.add(model);
                     }
 
-                    MedicationAdapter adapter = new MedicationAdapter(mMed,MedicationActivity.this);
-                    mRecycler.setAdapter(adapter);
-                    mRecycler.setLayoutManager(new LinearLayoutManager(MedicationActivity.this));
+                    A1cAdapter adapter = new A1cAdapter(A1cActivity.this,mA1c);
+                    aRecycler.setAdapter(adapter);
+                    aRecycler.setLayoutManager(new LinearLayoutManager(A1cActivity.this));
 
-                    total.setText(String.valueOf(mMed.size()));
+                    totalvalue.setText(String.valueOf(mA1c.size()));
 
                 }
 
@@ -103,8 +97,6 @@ public class MedicationActivity extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
-
     }
 
     @Override
@@ -118,7 +110,7 @@ public class MedicationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnadd:
-                startActivity(new Intent(MedicationActivity.this, MedicationModification.class));
+                startActivity(new Intent(A1cActivity.this, A1cModification.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -127,9 +119,10 @@ public class MedicationActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(MedicationActivity.this, MainActivity.class));
+        startActivity(new Intent(A1cActivity.this, MainActivity.class));
         finish();
     }
+
     @Override
     public boolean onSupportNavigateUp(){
         finish();

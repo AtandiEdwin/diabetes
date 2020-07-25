@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -22,8 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ian.diabetestracker.MyActivities.A1cActivity;
-import com.ian.diabetestracker.MyActivities.BloodSugarActivity;
+import com.ian.diabetestracker.MyActivities.PatientApp.A1cActivity;
 import com.ian.diabetestracker.R;
 
 import java.text.SimpleDateFormat;

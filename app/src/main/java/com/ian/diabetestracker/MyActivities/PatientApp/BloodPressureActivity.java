@@ -1,4 +1,4 @@
-package com.ian.diabetestracker.MyActivities;
+package com.ian.diabetestracker.MyActivities.PatientApp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,11 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.ian.diabetestracker.Adapters.BloodSugarAdapter;
+import com.ian.diabetestracker.Adapters.BloodPressureAdapter;
 import com.ian.diabetestracker.MainActivity;
-import com.ian.diabetestracker.Models.BloodSugarModel;
-import com.ian.diabetestracker.ModficationActivity.BloodSugarModification;
-import com.ian.diabetestracker.Constants.Links.*;
+import com.ian.diabetestracker.Models.BloodPressureModel;
+import com.ian.diabetestracker.ModficationActivity.BloodPressureMoodification;
 import com.ian.diabetestracker.R;
 
 import org.json.JSONArray;
@@ -34,52 +32,56 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ian.diabetestracker.Constants.Links.FETCH_SUGAR_DETAILS;
+import static com.ian.diabetestracker.Constants.Links.FETCH_PRESSURE_DETAILS;
 
-public class BloodSugarActivity extends AppCompatActivity {
+public class BloodPressureActivity extends AppCompatActivity {
 
-    RecyclerView sugarRecycler;
-    List<BloodSugarModel> mSugarList;
-    TextView totalValue;
+    List<BloodPressureModel> mPressure;
+    TextView total;
+    RecyclerView pRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blood_sugar);
+        setContentView(R.layout.activity_blood_pressure);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Blood Sugar");
+        actionBar.setTitle("Blood Pressure");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        mSugarList = new ArrayList<>();
-        sugarRecycler = findViewById(R.id.bloodSugarRecyclerId);
-        sugarRecycler.setHasFixedSize(true);
+        mPressure = new ArrayList<>();
 
-        totalValue = findViewById(R.id.totalValue);
+        total = findViewById(R.id.totalValue);
+
+        pRecycler = findViewById(R.id.bloodPressureRecyclerId);
+        pRecycler.setHasFixedSize(true);
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,FETCH_SUGAR_DETAILS, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET,FETCH_PRESSURE_DETAILS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonArray = new JSONArray(response);
                     for(int i=0; i<jsonArray.length();i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String whenMeasured = jsonObject.getString("when_measured");
-                        String unitofMeasure = jsonObject.getString("unit_of_measure");
-                        String notes = jsonObject.getString("sugar_notes");
-                        String date = jsonObject.getString("sugar_date");
-                        String time = jsonObject.getString("sugar_time");
 
-                        BloodSugarModel model = new BloodSugarModel(whenMeasured,unitofMeasure,notes,date,time);
-                        mSugarList.add(model);
+                        String systolic = jsonObject.getString("systolic");
+                        String diastolic = jsonObject.getString("diastolic");
+                        String pulse = jsonObject.getString("pulse");
+                        String arm = jsonObject.getString("arm");
+                        String notes = jsonObject.getString("p_notes");
+                        String date = jsonObject.getString("p_date");
+                        String time = jsonObject.getString("p_time");
+
+                        BloodPressureModel model = new BloodPressureModel(systolic,diastolic,pulse,arm,date,time,notes);
+                        mPressure.add(model);
                     }
 
-                    BloodSugarAdapter adapter = new BloodSugarAdapter(BloodSugarActivity.this,mSugarList);
-                    sugarRecycler.setAdapter(adapter);
-                    sugarRecycler.setLayoutManager(new LinearLayoutManager(BloodSugarActivity.this));
+                    BloodPressureAdapter adapter = new BloodPressureAdapter( mPressure,BloodPressureActivity.this);
+                    pRecycler.setAdapter(adapter);
+                    pRecycler.setLayoutManager(new LinearLayoutManager(BloodPressureActivity.this));
 
-                    totalValue.setText(String.valueOf(mSugarList.size()));
+                    total.setText(String.valueOf( mPressure.size()));
 
                 }
 
@@ -98,8 +100,8 @@ public class BloodSugarActivity extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-    }
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -111,18 +113,19 @@ public class BloodSugarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.btnadd:
-                startActivity(new Intent(BloodSugarActivity.this, BloodSugarModification.class));
+                startActivity(new Intent(BloodPressureActivity.this, BloodPressureMoodification.class));
                 return true;
-                default:
-                    return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(BloodSugarActivity.this, MainActivity.class));
+        startActivity(new Intent(BloodPressureActivity.this, MainActivity.class));
         finish();
     }
+
     @Override
     public boolean onSupportNavigateUp(){
         finish();
