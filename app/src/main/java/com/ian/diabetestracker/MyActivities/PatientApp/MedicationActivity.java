@@ -128,6 +128,7 @@ public class MedicationActivity extends AppCompatActivity {
     }
     @Override
     public boolean onSupportNavigateUp(){
+        startActivity(new Intent(MedicationActivity.this, MainActivity.class));
         finish();
         return true;
     }

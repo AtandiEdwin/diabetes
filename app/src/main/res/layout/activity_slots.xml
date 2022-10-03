@@ -10,6 +10,7 @@
 
     <LinearLayout
         android:id="@+id/slot_note_id"
+        android:visibility="gone"
         android:layout_width="350dp"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -31,11 +32,23 @@
             android:layout_gravity="center"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/note_text"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:layout_margin="20dp"
+        android:text="Available slots"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/note_text"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
         android:orientation="horizontal"
         android:id="@+id/slotRecycler"/>
 

@@ -125,6 +125,7 @@ public class A1cActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
+        startActivity(new Intent(A1cActivity.this, MainActivity.class));
         finish();
         return true;
     }

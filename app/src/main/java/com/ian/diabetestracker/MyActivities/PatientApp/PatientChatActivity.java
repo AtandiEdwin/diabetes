@@ -1,5 +1,6 @@
 package com.ian.diabetestracker.MyActivities.PatientApp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -55,6 +56,9 @@ public class PatientChatActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_chat);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Patient Chat Room");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         loadMessages();
         patientRecycler = findViewById(R.id.patientRecycler);
         patient_message  = findViewById(R.id.patient_message);
@@ -179,5 +183,12 @@ public class PatientChatActivity extends AppCompatActivity  {
     public void onBackPressed() {
         startActivity(new Intent(PatientChatActivity.this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        startActivity(new Intent(PatientChatActivity.this, MainActivity.class));
+        finish();
+        return true;
     }
 }

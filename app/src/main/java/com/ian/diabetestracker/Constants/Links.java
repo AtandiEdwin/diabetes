@@ -2,7 +2,7 @@ package com.ian.diabetestracker.Constants;
 
 public class Links {
 
-    static final String BASE_URL = "http://192.168.43.50/Diabetes%20Tracker/";
+    static final String BASE_URL = "http://192.168.43.95/Diabetes%20Tracker/";
 
     public static final  String FETCH_SUGAR_DETAILS = BASE_URL +"fetch_sugar_details.php";
     public static final  String FETCH_PRESSURE_DETAILS =BASE_URL + "fetch_pressure_details.php";
@@ -24,5 +24,6 @@ public class Links {
     public static final  String ADD_SLOTS =BASE_URL + "addslot.php";
 
     public static final  String FETCH_SLOTS =BASE_URL + "single_slot.php";
+    public static final  String DOC_SLOTS =BASE_URL + "docslot.php";
 
 }

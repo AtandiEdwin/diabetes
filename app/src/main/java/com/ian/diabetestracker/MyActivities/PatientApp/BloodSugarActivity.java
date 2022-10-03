@@ -123,6 +123,7 @@ public class BloodSugarActivity extends AppCompatActivity {
     }
     @Override
     public boolean onSupportNavigateUp(){
+        startActivity(new Intent(BloodSugarActivity.this, MainActivity.class));
         finish();
         return true;
     }

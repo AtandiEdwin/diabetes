@@ -127,6 +127,7 @@ public class WeightActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
+        startActivity(new Intent(WeightActivity.this, MainActivity.class));
         finish();
         return true;
     }

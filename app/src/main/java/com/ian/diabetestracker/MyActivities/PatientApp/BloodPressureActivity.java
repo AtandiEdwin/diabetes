@@ -128,6 +128,7 @@ public class BloodPressureActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
+        startActivity(new Intent(BloodPressureActivity.this, MainActivity.class));
         finish();
         return true;
     }

@@ -43,6 +43,7 @@ import static com.ian.diabetestracker.Constants.PaperCommons.TOPICTIME;
 
 public class SlotsActivity extends AppCompatActivity {
     RecyclerView slotRecycler;
+    TextView note_text;
     List<SlotModel> mslot;
     LinearLayout slot_note_id;
     @Override
@@ -56,6 +57,7 @@ public class SlotsActivity extends AppCompatActivity {
         final LinearLayout slot = findViewById(R.id.slot);
         Button yesSlot  =findViewById(R.id.yesSlot);
         Button noSlot = findViewById(R.id.noSlot);
+        note_text = findViewById(R.id.note_text);
         slot_note_id = findViewById(R.id.slot_note_id);
 
         mslot = new ArrayList<>();
@@ -123,14 +125,14 @@ public class SlotsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    if(response!=null){
+                    JSONArray jsonArray = new JSONArray(response);
+                    if(jsonArray.length()<0){
                         slot_note_id.setVisibility(View.VISIBLE);
 
                     }
                     else{
                         slot_note_id.setVisibility(View.GONE);
-                        JSONArray jsonArray = new JSONArray(response);
-
+                        note_text.setVisibility(View.VISIBLE);
                         for (int i=0; i<jsonArray.length();i++){
                             JSONObject jsonObject =jsonArray.getJSONObject(i);
 

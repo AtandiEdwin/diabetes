@@ -4,16 +4,18 @@
     android:layout_height="wrap_content">
     <LinearLayout
         android:gravity="center"
-        android:background="@android:color/holo_green_dark"
+        android:background="#228c22"
         android:layout_margin="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/thirdslot"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:id="@+id/topic"
@@ -27,8 +29,11 @@
             android:textSize="18sp"
             android:text="5:00PM"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:id="@+id/bookId"
             android:text="book"/>
 
